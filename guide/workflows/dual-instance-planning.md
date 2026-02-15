@@ -1,3 +1,9 @@
+---
+title: "Dual-Instance Planning Workflow"
+description: "Use two Claude instances with distinct roles for planning and implementation"
+tags: [workflow, architecture, design-patterns]
+---
+
 # Dual-Instance Planning Workflow
 
 > **Confidence**: Tier 2 — Based on practitioner experience (Jon Williams, Feb 2026). Pattern validated through personal transition Cursor → Claude Code over 6 months.

@@ -1,3 +1,9 @@
+---
+title: "Task Management Workflow"
+description: "Multi-session task coordination using Tasks API and TodoWrite for complex projects"
+tags: [workflow, guide, agents]
+---
+
 # Task Management Workflow
 
 **Version**: Claude Code v2.1.16+

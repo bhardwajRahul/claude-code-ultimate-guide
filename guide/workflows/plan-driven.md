@@ -1,3 +1,9 @@
+---
+title: "Plan-Driven Development"
+description: "Use /plan mode for non-trivial tasks to explore and propose implementation plans"
+tags: [workflow, guide, architecture]
+---
+
 # Plan-Driven Development
 
 > **Confidence**: Tier 1 — Based on Claude Code's native /plan mode functionality.

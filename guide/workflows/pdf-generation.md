@@ -1,3 +1,9 @@
+---
+title: "PDF Generation with Claude Code"
+description: "Generate professional PDFs using Claude Code with Quarto and Typst stack"
+tags: [workflow, guide, integration]
+---
+
 # PDF Generation with Claude Code
 
 > **Confidence**: Tier 2 — Based on production-tested workflow with Quarto/Typst stack.

@@ -1,3 +1,9 @@
+---
+title: "Agent Teams Workflow"
+description: "Multi-agent parallel coordination for complex tasks with autonomous team lead"
+tags: [workflow, agents, architecture]
+---
+
 # Agent Teams Workflow
 
 > **Multi-agent parallel coordination for complex tasks**

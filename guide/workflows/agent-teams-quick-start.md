@@ -1,3 +1,9 @@
+---
+title: "Agent Teams Quick Start Guide"
+description: "Practical 5-minute setup guide with copy-paste patterns for agent teams"
+tags: [workflow, agents, tutorial]
+---
+
 # Agent Teams Quick Start Guide
 
 > **Practical guide for using agent teams in your projects**

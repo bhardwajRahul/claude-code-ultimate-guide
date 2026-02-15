@@ -1,3 +1,9 @@
+---
+title: "Exploration Before Implementation"
+description: "Ask Claude for multiple approaches with trade-offs before coding to prevent anchoring bias"
+tags: [workflow, architecture, design-patterns]
+---
+
 # Exploration Before Implementation
 
 > **Confidence**: Tier 2 — Validated by practitioner studies (+20-30% decision quality, +40% alternatives identified).

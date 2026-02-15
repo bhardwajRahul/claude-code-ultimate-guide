@@ -1,3 +1,9 @@
+---
+title: "Search Tools Mastery: Combining rg, grepai, Serena & ast-grep"
+description: "Master code search by combining the right tools for maximum efficiency"
+tags: [workflow, search, guide, mcp]
+---
+
 # Search Tools Mastery: Combining rg, grepai, Serena & ast-grep
 
 > **Master the art of code search by combining the right tools for maximum efficiency**

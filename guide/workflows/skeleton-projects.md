@@ -1,3 +1,9 @@
+---
+title: "Skeleton Projects Workflow"
+description: "Use existing battle-tested repositories as scaffolding for new projects"
+tags: [workflow, architecture, template]
+---
+
 # Skeleton Projects Workflow
 
 Use existing, battle-tested repositories as scaffolding for new projects instead of starting from scratch.

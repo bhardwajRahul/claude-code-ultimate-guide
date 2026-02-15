@@ -1,3 +1,9 @@
+---
+title: "TDD with Claude Code"
+description: "Test-Driven Development workflow with explicit prompting for red-green-refactor cycles"
+tags: [workflow, tdd, testing]
+---
+
 # TDD with Claude Code
 
 > **Confidence**: Tier 1 — Based on official Anthropic best practices and extensive community validation.

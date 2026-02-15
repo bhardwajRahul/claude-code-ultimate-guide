@@ -1,3 +1,9 @@
+---
+title: "Claude Code Workflows"
+description: "Step-by-step guides for common development patterns with Claude Code"
+tags: [workflow, guide, reference]
+---
+
 # Claude Code Workflows
 
 Step-by-step guides for common development patterns with Claude Code.

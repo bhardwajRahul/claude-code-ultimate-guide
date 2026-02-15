@@ -1,3 +1,9 @@
+---
+title: "Spec-First Development with Claude"
+description: "Define specifications in CLAUDE.md before implementation for structured development"
+tags: [workflow, architecture, config]
+---
+
 # Spec-First Development with Claude
 
 > **Confidence**: Tier 2 — Validated by multiple production teams and aligns with official SDD guidance.

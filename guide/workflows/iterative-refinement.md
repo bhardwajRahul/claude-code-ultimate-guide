@@ -1,3 +1,9 @@
+---
+title: "Iterative Refinement"
+description: "Prompt, observe, and reprompt until satisfied — the core loop of AI-assisted development"
+tags: [workflow, guide, design-patterns]
+---
+
 # Iterative Refinement
 
 > **Confidence**: Tier 2 — Validated pattern observed across many Claude Code users.
