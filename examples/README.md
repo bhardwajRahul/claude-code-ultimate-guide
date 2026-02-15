@@ -17,7 +17,7 @@ Annotated templates that teach you **why** patterns work, not just how to config
 | [`agents/`](./agents/) | Custom AI personas for specialized tasks | 6 |
 | [`commands/`](./commands/) | Slash commands (workflow automation) | 23 |
 | [`hooks/`](./hooks/) | Event-driven security & automation scripts | 31 |
-| [`skills/`](./skills/) | Reusable knowledge modules (patterns, TDD, AST) | 8 |
+| [`skills/`](./skills/) | Reusable knowledge modules — [9 on SkillHub](https://skills.palebluedot.live/owner/FlorianBruniaux) | 13 |
 | [`claude-md/`](./claude-md/) | CLAUDE.md configuration profiles | 5 |
 | [`config/`](./config/) | Settings, MCP, git templates | 5 |
 | [`memory/`](./memory/) | CLAUDE.md memory file templates | 2 |
@@ -64,7 +64,7 @@ Annotated templates that teach you **why** patterns work, not just how to config
 | [output-evaluator.md](./agents/output-evaluator.md) | LLM-as-a-Judge quality gate | Haiku |
 | [devops-sre.md](./agents/devops-sre.md) | Infrastructure troubleshooting with FIRE framework | Sonnet |
 
-### Skills (8)
+### Skills (13) — [9 on SkillHub](https://skills.palebluedot.live/owner/FlorianBruniaux)
 
 | File | Purpose |
 |------|---------|
@@ -76,6 +76,11 @@ Annotated templates that teach you **why** patterns work, not just how to config
 | [ast-grep-patterns.md](./skills/ast-grep-patterns.md) | AST-based code search patterns |
 | [rtk-optimizer/](./skills/rtk-optimizer/) | RTK token optimization analysis |
 | [audit-agents-skills/](./skills/audit-agents-skills/) | Quality audit for agents, skills, and commands |
+| [skill-creator/](./skills/skill-creator/) | Create new skills with proper structure and best practices |
+| [landing-page-generator/](./skills/landing-page-generator/) | Generate deploy-ready landing pages from any repository |
+| [ccboard/](./skills/ccboard/) | Comprehensive TUI/Web dashboard for Claude Code monitoring |
+| [guide-recap/](./skills/guide-recap/) | Transform CHANGELOG entries into social content (LinkedIn, Twitter/X, Slack) |
+| [release-notes-generator/](./skills/release-notes-generator/) | Generate release notes in 3 formats from git commits |
 
 ### Commands (23)
 
