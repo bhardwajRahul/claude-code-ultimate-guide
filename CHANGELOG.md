@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Documentation
+
+- **Claude Code Releases**: Updated tracking to v2.1.45
+  - Claude Sonnet 4.6 model support
+  - `spinnerTipsOverride` setting for customizable spinner tips
+  - SDK `SDKRateLimitInfo` / `SDKRateLimitEvent` for rate limit tracking
+  - Fixed Agent Teams on Bedrock/Vertex/Foundry; memory improvements for large outputs
+
 ## [3.27.4] - 2026-02-17
 
 ### Added

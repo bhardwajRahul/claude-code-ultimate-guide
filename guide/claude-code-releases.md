@@ -10,7 +10,7 @@ tags: [reference, release]
 > **Full details**: [github.com/anthropics/claude-code/CHANGELOG.md](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md)
 > **Machine-readable**: [claude-code-releases.yaml](../machine-readable/claude-code-releases.yaml)
 
-**Latest**: v2.1.44 | **Updated**: 2026-02-17
+**Latest**: v2.1.45 | **Updated**: 2026-02-17
 
 ---
 
@@ -24,6 +24,18 @@ tags: [reference, release]
 ---
 
 ## 2.1.x Series (January-February 2026)
+
+### v2.1.45 (2026-02-17)
+
+- **New**: Claude Sonnet 4.6 model support
+- **New**: `spinnerTipsOverride` setting — customize spinner tips via `tips` array, opt out of built-in tips with `excludeDefault: true`
+- **New**: SDK `SDKRateLimitInfo` and `SDKRateLimitEvent` types for rate limit status tracking (utilization, reset times, overage)
+- **Fixed**: Agent Teams teammates failing on Bedrock, Vertex, and Foundry (env vars now propagated to tmux-spawned processes)
+- **Fixed**: Sandbox "operation not permitted" errors on macOS temp file writes
+- **Fixed**: Task tool (backgrounded agents) crashing with `ReferenceError` on completion
+- **Improved**: Memory usage for large shell command outputs (RSS no longer grows unboundedly)
+- **Improved**: Startup performance (removed eager session history loading)
+- **Improved**: Plugin-provided commands, agents, and hooks available immediately after install (no restart needed)
 
 ### v2.1.44 (2026-02-17)
 
