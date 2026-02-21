@@ -3,8 +3,8 @@
 # Purpose: Track Claude Code product releases for documentation sync
 # Maintained: Manual updates when new releases are announced
 
-latest: "2.1.49"
-updated: "2026-02-20"
+latest: "2.1.50"
+updated: "2026-02-21"
 
 # ════════════════════════════════════════════════════════════════
 # RELEASES (newest first, condensed highlights only)
@@ -14,6 +14,15 @@ releases:
   # ─────────────────────────────────────────────────────────────
   # 2.1.x Series (January-February 2026)
   # ─────────────────────────────────────────────────────────────
+
+  - version: "2.1.50"
+    date: "2026-02-21"
+    highlights:
+      - "⭐ `WorktreeCreate` and `WorktreeRemove` hook events for custom VCS setup/teardown with agent worktree isolation"
+      - "`isolation: worktree` in agent definitions for declarative worktree isolation; `claude agents` CLI command to list configured agents"
+      - "Opus 4.6 (fast mode) now has full 1M context window; `CLAUDE_CODE_DISABLE_1M_CONTEXT` env var to disable it"
+      - "Major memory leak fixes + startup performance improvements for headless mode; `CLAUDE_CODE_SIMPLE` now fully minimal"
+    breaking: []
 
   - version: "2.1.49"
     date: "2026-02-20"

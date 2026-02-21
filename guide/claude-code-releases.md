@@ -10,13 +10,13 @@ tags: [reference, release]
 > **Full details**: [github.com/anthropics/claude-code/CHANGELOG.md](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md)
 > **Machine-readable**: [claude-code-releases.yaml](../machine-readable/claude-code-releases.yaml)
 
-**Latest**: v2.1.49 | **Updated**: 2026-02-20
+**Latest**: v2.1.50 | **Updated**: 2026-02-21
 
 ---
 
 ## Quick Jump
 
-- [2.1.x Series (January-February 2026)](#21x-series-january-february-2026) — Worktree isolation, background agents, ConfigChange hook, Fast mode Opus 4.6, claude.ai MCP connectors
+- [2.1.x Series (January-February 2026)](#21x-series-january-february-2026) — Worktree isolation, background agents, ConfigChange hook, Fast mode Opus 4.6, 1M context, claude.ai MCP connectors
 - [2.0.x Series (Nov 2025 - Jan 2026)](#20x-series-november-2025---january-2026) — Opus 4.5, Claude in Chrome, Background agents
 - [Breaking Changes Summary](#breaking-changes-summary)
 - [Milestone Features](#milestone-features)
@@ -24,6 +24,29 @@ tags: [reference, release]
 ---
 
 ## 2.1.x Series (January-February 2026)
+
+### v2.1.50 (2026-02-21)
+
+- **New**: `WorktreeCreate` and `WorktreeRemove` hook events — custom VCS setup/teardown when agent worktree isolation creates or removes worktrees
+- **New**: `isolation: worktree` in agent definitions for declarative worktree isolation (no longer requires setting in each call)
+- **New**: `claude agents` CLI command to list all configured agents
+- **New**: `startupTimeout` configuration for LSP servers
+- **New**: `CLAUDE_CODE_DISABLE_1M_CONTEXT` env var to disable 1M context window support
+- **New**: Pre-configured OAuth client credentials for MCP servers that don't support Dynamic Client Registration (Slack); use `--client-id` and `--client-secret` with `claude mcp add`
+- **New**: VSCode `/extra-usage` command support
+- **Changed**: Opus 4.6 (fast mode) now includes full 1M context window
+- **Changed**: `CLAUDE_CODE_SIMPLE` mode now also disables MCP tools, attachments, hooks, and CLAUDE.md loading for fully minimal experience
+- **Fixed**: Bug where resumed sessions could be invisible when working directory involved symlinks
+- **Fixed**: `disableAllHooks` setting to respect managed settings hierarchy (non-managed settings can no longer disable managed hooks)
+- **Fixed**: Linux: native modules not loading on systems with glibc older than 2.30 (RHEL 8)
+- **Fixed**: Memory leak in agent teams where completed teammate tasks were never garbage collected
+- **Fixed**: Memory leak where completed task state objects were never removed from AppState
+- **Fixed**: Memory leak where LSP diagnostic data was never cleaned up after delivery
+- **Fixed**: Unbounded memory growth in long sessions (file history snapshots capped; circular buffer fix; stream buffers released after use)
+- **Fixed**: MCP tools not discovered when tool search is enabled and prompt passed as launch argument
+- **Fixed**: Prompt suggestion cache regression that reduced cache hit rates
+- **Improved**: Startup performance for headless mode (`-p`) by deferring Yoga WASM and UI component imports
+- **Improved**: Memory usage during long sessions by clearing internal caches after compaction and clearing large tool results after processing
 
 ### v2.1.49 (2026-02-20)
 

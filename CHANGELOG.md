@@ -8,11 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Documentation
 
-- **Claude Code Releases**: Updated tracking to v2.1.49
-  - `--worktree` / `-w` CLI flag + subagent `isolation: "worktree"` for isolated git worktrees
-  - `background: true` in agent definitions to always run as background task
-  - `ConfigChange` hook event for enterprise security auditing
-  - Simple mode now includes file edit tool; Sonnet 4.6 now has 1M context on Max plan
+- **Claude Code Releases**: Updated tracking to v2.1.50
+  - `WorktreeCreate`/`WorktreeRemove` hook events; `isolation: worktree` in agent definitions
+  - `claude agents` CLI command; `CLAUDE_CODE_DISABLE_1M_CONTEXT` env var
+  - Opus 4.6 fast mode now has full 1M context window
+  - Major memory leak fixes + headless mode startup performance improvements
 
 ### Added
 
