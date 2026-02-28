@@ -14,7 +14,7 @@ const GUIDE_ROOT = process.env.GUIDE_ROOT
 
 const CONTENT_DIR = GUIDE_ROOT
   ? resolve(GUIDE_ROOT, 'machine-readable')
-  : resolve(__dirname, '../../content');
+  : resolve(__dirname, '../content');
 
 const ALLOWED_EXTENSIONS = new Set([
   '.md', '.yaml', '.yml', '.sh', '.ts', '.js', '.json', '.py', '.txt',

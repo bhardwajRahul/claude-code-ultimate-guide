@@ -1,20 +1,26 @@
 {
   "name": "claude-code-ultimate-guide-mcp",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "MCP server for the Claude Code Ultimate Guide — search, read, and explore 20K+ lines of documentation directly from Claude Code",
-  "keywords": ["mcp", "claude-code", "anthropic", "documentation", "guide"],
+  "keywords": [
+    "mcp",
+    "claude-code",
+    "anthropic",
+    "documentation",
+    "guide"
+  ],
   "author": "Florian Bruniaux",
   "license": "MIT",
   "homepage": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git",
+    "url": "git+https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git",
     "directory": "mcp-server"
   },
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "claude-code-guide-mcp": "./dist/index.js"
+    "claude-code-ultimate-guide-mcp": "dist/index.js"
   },
   "files": [
     "dist/**/*.js",
@@ -22,7 +28,7 @@
     "content"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && chmod +x dist/index.js",
     "dev": "GUIDE_ROOT=.. node --watch dist/index.js",
     "start": "node dist/index.js",
     "prepublishOnly": "npm run build"
