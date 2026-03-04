@@ -154,6 +154,19 @@ These commands are defined in `.claude/commands/` and automate:
 - Landing site synchronization verification
 - Git commit and push to both repositories
 
+### Command Naming Conventions
+
+Implicit prefixes used in `.claude/commands/`:
+
+| Prefix | Pattern | Examples |
+|--------|---------|---------|
+| `audit-*` | Quality checks with scored output | `audit-agents-skills`, `audit-deps` |
+| `update-*` | Sync or refresh data from external source | `update-infos-release`, `update-threat-db` |
+| `security-*` | Security scans, ascending depth | `security-check` (quick), `security-audit` (full) |
+| *(no prefix)* | Core guide workflow commands | `release`, `sync`, `version`, `changelog` |
+
+When adding a new command, pick the prefix that matches the action type. Avoid creating new prefix categories unless the existing four don't fit.
+
 ## Conventions
 
 ### Documentation Style

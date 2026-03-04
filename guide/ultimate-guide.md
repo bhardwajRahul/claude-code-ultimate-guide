@@ -4454,6 +4454,36 @@ This drops the full `docs/brainstorms/`, `docs/solutions/`, `docs/plans/`, and `
 
 Installing the plugin is not required to apply the philosophy. The `docs/solutions/` pattern and the loop work with your existing Claude Code setup.
 
+#### Brainstorm-before-planning
+
+One specific pattern from compound-engineering that works independently: before creating a plan, check if relevant thinking already exists.
+
+The instruction to add to CLAUDE.md or an agent:
+
+```
+Before creating a plan for any feature or problem, check docs/brainstorms/ for existing
+thinking on this topic. If a brainstorm exists, use it as input. If not, create a new
+brainstorm file before writing the plan.
+```
+
+The brainstorm document is not a plan. It explores the problem space: what we know, what we don't know, what we've tried before, what constraints exist. The plan comes after. Most teams skip this step and write plans that repeat reasoning already done in a previous session.
+
+#### The Documentation Hierarchy as Project Memory
+
+The full directory structure the plugin establishes separates four distinct types of documents that most projects conflate:
+
+| Directory | Content | Lifecycle |
+|-----------|---------|-----------|
+| `CLAUDE.md` | Rules and constraints for the AI | Updated rarely, high signal |
+| `docs/brainstorms/` | Problem exploration, open questions | Created before planning, kept as reference |
+| `docs/plans/` | Active implementation plans | Created from brainstorms, archived after completion |
+| `docs/solutions/` | Solved problems with full context | Created after completion, referenced when similar problems appear |
+| `todos/` | Task tracking | Ephemeral, replaced each sprint |
+
+CLAUDE.md contains rules. `docs/solutions/` contains solved problems. `docs/brainstorms/` contains thinking. The separation matters because an AI reading CLAUDE.md expects constraints, not a log of past decisions. When these get mixed, the AI treats old decisions as current rules.
+
+You can adopt this structure incrementally: start with `docs/solutions/` (highest ROI), add `docs/brainstorms/` when plans start repeating prior reasoning, add the rest when you have a repeating workflow.
+
 ### Build for the Model 6 Months Out
 
 > **"Don't design your workflows around the limitations of today's model. Build for where the technology will be in six months."**
@@ -6405,6 +6435,37 @@ Scope-focused agents for comprehensive PR review:
 **Source**: [Pat Cullen's Final Review](https://gist.github.com/patyearone/c9a091b97e756f5ed361f7514d88ef0b)
 **Implementation**: See `/review-pr` advanced section, `examples/agents/code-reviewer.md`, `guide/workflows/iterative-refinement.md` (Review Auto-Correction Loop)
 
+### Named Perspective Agents
+
+The guide lists "roleplaying expertise personas" as a bad reason to use agents (see §3.x, When NOT to use agents). Named Perspective Agents are a different pattern and should not be confused with it.
+
+**The distinction**:
+
+| Pattern | What it is | Problem |
+|---------|-----------|---------|
+| Persona roleplay (anti-pattern) | "You are a senior backend developer with 10 years of experience" | Generic role, adds nothing over a good prompt |
+| Named Perspective | "Review from DHH's perspective" | Encodes a specific, recognizable set of engineering opinions |
+
+A Named Perspective Agent uses a well-known engineering name as a compressed prompt. Naming an agent "DHH" bundles the following without spelling it out: fat models, thin controllers, REST conventions over configuration, skepticism of premature abstraction, Rails pragmatism. The name is a shortcut to a distinct opinionated style, not a costume.
+
+**When it works**: Only for engineers whose views Claude has been trained on and whose opinions map to a stable, recognizable style. DHH (Rails), Kent Beck (TDD, simplicity), Martin Fowler (refactoring, patterns) are good candidates. Random names are not.
+
+**Example** (from Every.to compound-engineering plugin):
+
+```markdown
+---
+name: dhh-reviewer
+description: Review code from DHH's perspective. Prioritize Rails conventions, fat models, thin controllers, pragmatic REST, and skepticism of unnecessary abstraction.
+allowed-tools: Read, Grep
+---
+```
+
+The agent's value is in surfacing a coherent perspective that might disagree with your default approach, not in simulating a person.
+
+**Caveat**: Named Perspective Agents can drift as Claude's training evolves. Treat the name as a convenient shorthand, not a guarantee that the agent will track a real person's current opinions.
+
+*Source: Every.to compound-engineering plugin (2026)*
+
 ### Parallelization Decision Matrix
 
 ```
@@ -6718,6 +6779,24 @@ skills-ref to-prompt ./my-skill     # Generate <available_skills> XML for agent 
 ```
 
 > **Beyond spec validation**: `/audit-agents-skills` extends frontmatter checks with content quality, design patterns, and production readiness scoring. Works on both skills and agents together with weighted criteria (32 points max per file).
+
+### Skill Quality Gates
+
+Before publishing or committing a skill, run through this content checklist. `/audit-agents-skills` scores frontmatter and structure; this checklist covers the content layer that automated tools miss.
+
+**Checklist (Every.to compound-engineering criteria, adapted)**:
+
+- [ ] **Frontmatter complete**: `name`, `description`, `allowed-tools` all present and accurate
+- [ ] **"When to Apply" section**: explicitly states the triggers and anti-triggers (when NOT to use)
+- [ ] **Methodology is structured**: numbered steps or a clear decision sequence, not free-form paragraphs
+- [ ] **No TODOs or placeholders**: every section is complete and actionable
+- [ ] **allowed-tools scoped to minimum**: if the skill only reads files, don't grant Bash; if it searches, don't grant Edit
+- [ ] **Output format documented**: what does Claude produce? Example or template included
+- [ ] **No AskUserQuestion for cross-platform skills**: skills invoked by other agents should not block on interactive prompts
+- [ ] **Single responsibility**: one skill, one domain — not a catch-all that dispatches to sub-skills
+- [ ] **Description is a trigger sentence**: the `description` field should tell Claude when to activate this skill, not what it does internally
+
+A skill that passes these 9 gates is ready for production use or sharing via the agentskills.io registry.
 
 ## 5.3 Skill Template
 
@@ -19641,6 +19720,32 @@ Budget-constrained? ──YES──> Single agent
 Complex coordination needed? ──YES──> Agent Teams ✓
                             ──NO──> Single agent
 ```
+
+### Swarm vs Sequential Coordination
+
+Two distinct coordination patterns exist for multi-agent review, and the choice matters:
+
+| Dimension | Sequential Specialists | Swarm Mode |
+|-----------|----------------------|------------|
+| **Structure** | Predefined lead + members | Ad-hoc, no hierarchy |
+| **Coordination** | Lead assigns tasks, synthesizes | Each reviewer works independently |
+| **Leadership** | Team lead orchestrates | Human synthesizes findings |
+| **Task assignment** | Lead delegates to specific agents | All relevant agents get the same input |
+| **Best for** | Tasks with dependencies between reviewers | Independent review, final pre-merge pass |
+| **When to use** | Complex workflows, state needs sharing | PR review, unfamiliar codebase, thoroughness |
+
+**Swarm Mode in practice** (Every.to compound-engineering pattern):
+
+Launch all relevant specialist reviewers in parallel against the same diff or PR, with no coordination between them. Each produces independent findings. You read all findings and decide what to act on.
+
+```bash
+# Swarm: all reviewers see the same input, report independently
+/workflows:review --swarm   # Every.to compound-engineering command
+```
+
+This is distinct from Agent Teams: there is no persistent team structure, no shared context between agents, no lead synthesizing in real time. It is faster to set up and appropriate when thoroughness matters more than coordination.
+
+**Rule of thumb**: Use Agent Teams for workflows with sequential dependencies (agent A's output feeds agent B). Use Swarm when each reviewer can work from the same starting point and you want maximum coverage with minimum setup overhead.
 
 ### Practitioner Testimonial
 
