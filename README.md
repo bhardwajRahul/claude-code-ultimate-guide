@@ -543,6 +543,8 @@ security_gate_hook: "examples/hooks/bash/security-gate.sh" # file path ref
 
 A series of 9 focused whitepapers covering Claude Code in depth. Each covers a specific topic and is available in both **French and English**.
 
+> **Coming soon** — currently in private access. Public release planned.
+
 - **00** — *De Zéro à Productif / From Zero to Productive* — Foundations, first steps
 - **01** — *Prompts qui Marchent / Prompts That Work* — Prompting method, context, hooks
 - **02** — *Personnaliser Claude / Customizing Claude* — CLAUDE.md, custom agents, skills
@@ -552,8 +554,6 @@ A series of 9 focused whitepapers covering Claude Code in depth. Each covers a s
 - **06** — *Privacy & Compliance* — Anthropic data, ZDR, retention policies
 - **07** — *Guide de Référence / Reference Guide* — Complete synthesis + advanced workflows
 - **08** — *Agent Teams* — Multi-agent orchestration and coordination
-
-→ **[Download all whitepapers](https://www.florian.bruniaux.com/guides)**
 
 ---
 
