@@ -133,7 +133,7 @@ No cloning needed. Add to `~/.claude.json` and ask questions directly from any s
 }
 ```
 
-12 tools: `search_guide`, `read_section`, `get_cheatsheet`, `get_digest`, `get_example`, `list_examples`, `get_release`, `get_changelog`, `list_topics`, `compare_versions`, `get_threat`, `list_threats`, `search_examples` — plus 8 slash commands `/ccguide:*` and a Haiku agent.
+17 tools: `search_guide`, `read_section`, `get_cheatsheet`, `get_digest`, `get_example`, `list_examples`, `search_examples`, `get_release`, `get_changelog`, `compare_versions`, `list_topics`, `get_threat`, `list_threats`, plus `init_official_docs`, `refresh_official_docs`, `diff_official_docs`, `search_official_docs` (v1.1.0 — official Anthropic docs tracker) — plus 13 slash commands `/ccguide:*` and a Haiku agent.
 
 **Onboarding one-liner** (once MCP is configured):
 ```bash

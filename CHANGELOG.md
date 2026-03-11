@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   - `diff_official_docs()` — compare baseline vs current at section level, zero network calls
   - `search_official_docs(query)` — search official docs, loads only matching sections
 - **Local cache architecture**: 4 files in `~/.cache/claude-code-guide/` (index + content, baseline + current). Diff reads only lightweight index files (~50KB), never the full 1.2MB doc. Atomic writes via `.tmp` + rename to prevent corruption.
+- **5 new slash commands** (`/ccguide:init-docs`, `/ccguide:refresh-docs`, `/ccguide:diff-docs`, `/ccguide:search-docs`, `/ccguide:daily`) — documented in `ultimate-guide.md` and added to `.claude/commands/ccguide/`
+- **`/ccguide:daily`** orchestrates the full daily workflow: refresh → diff official docs → guide/CC digest in one shot
 
 ## [3.34.2] - 2026-03-11
 
