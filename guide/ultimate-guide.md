@@ -16,7 +16,7 @@ tags: [guide, reference, workflows, agents, hooks, mcp, security]
 
 **Last updated**: January 2026
 
-**Version**: 3.36.0
+**Version**: 3.37.0
 
 ---
 
@@ -5166,7 +5166,7 @@ The `.claude/` folder is your project's Claude Code directory for memory, settin
 | Personal preferences | `CLAUDE.md` | ❌ Gitignore |
 | Personal permissions | `settings.local.json` | ❌ Gitignore |
 
-### 3.36.0 Version Control & Backup
+### 3.37.0 Version Control & Backup
 
 **Problem**: Without version control, losing your Claude Code configuration means hours of manual reconfiguration across agents, skills, hooks, and MCP servers.
 
@@ -11531,26 +11531,43 @@ curl -fsSL https://raw.githubusercontent.com/rtk-ai/icm/main/install.sh | sh
 cargo install --path crates/icm-cli
 ```
 
-**MCP Config** (auto-configured via `icm init`):
+**Setup** (3 separate modes, not a single interactive command):
 
 ```bash
-icm init   # interactive setup — detects and configures your editor
+# Step 1: MCP server → auto-injects into ~/.claude.json (and 13 other editors)
+icm init --mode mcp
+
+# Step 2: PostToolUse hook → auto-extracts context every N tool calls
+icm init --mode hook
+
+# Step 3: /recall and /remember slash commands
+icm init --mode skill
 ```
+
+Restart Claude Code after running all three.
 
 **Usage**:
 
 ```bash
-# Store episodic memory (auto-decay)
-icm store -t "my-project" -c "Use PostgreSQL for main DB" -i high
+# Store episodic memory (importance = critical|high|medium|low, not a float)
+icm store --topic "my-project" --content "Use PostgreSQL for main DB" --importance high
 
 # Recall with hybrid search
-icm recall "database choice" --topic "my-project"
+icm recall "database choice"
 
 # Build permanent knowledge graph
 icm memoir create -n "system-architecture"
 icm memoir add-concept -m "system-architecture" -n "auth-service"
 icm memoir link -m "system-architecture" --from "api-gateway" --to "auth-service" -r depends-on
+
+# Session management
+icm stats      # memory count, topics, avg weight
+icm topics     # list all topics
+icm decay      # apply temporal decay manually
+icm prune      # remove low-weight entries
 ```
+
+**Onboarding prompt**: a ready-to-use session starter template is available at `examples/memory/icm-session-starter.md`.
 
 **Performance** (1000 ops, 384d embeddings — vendor-reported):
 
@@ -23402,4 +23419,4 @@ We'll evaluate and add it to this section if it meets quality criteria.
 
 **Contributions**: Issues and PRs welcome.
 
-**Last updated**: January 2026 | **Version**: 3.36.0
+**Last updated**: January 2026 | **Version**: 3.37.0

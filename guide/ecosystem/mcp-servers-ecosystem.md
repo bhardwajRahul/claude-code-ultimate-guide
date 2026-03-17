@@ -10,6 +10,8 @@ tags: [mcp, reference, integration]
 
 This guide covers validated community MCP servers beyond the official Anthropic servers. All servers listed have been evaluated for production readiness, maintenance activity, and security.
 
+> **Not sure whether to use an MCP server or a CLI tool?** See the [MCP vs CLI Decision Guide](./mcp-vs-cli.md) for a full breakdown of tradeoffs, a decision matrix, and guidance by situation.
+
 ## Table of Contents
 
 - [Official vs Community Servers](#official-vs-community-servers)
