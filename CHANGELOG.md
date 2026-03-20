@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Claude Code releases tracking updated to v2.1.80** (`machine-readable/claude-code-releases.yaml`, `guide/core/claude-code-releases.md`): `rate_limits` field in statusline for Claude.ai rate limit usage (5h + 7d windows), `source: 'settings'` plugin marketplace (inline declarations in settings.json), `effort` frontmatter for skills/slash commands, `--channels` research preview (MCP servers push messages), fixed `--resume` dropping parallel tool results, ~80MB memory reduction on startup for large repos.
+
 ## [3.37.2] - 2026-03-19
 
 - **RSS Feed added to cc.bruniaux.com** (`landing: src/pages/rss.xml.ts`, `src/data/rss-entries.ts`): Unified RSS feed at `/rss.xml` merging Claude Code CLI releases and guide content updates (guide releases, new pages, new cards, new whitepapers). Auto-discovery `<link>` tag in all page heads, RSS icon in footer and "More" nav dropdown, mention in announcement banner. Dedicated `rss-entries.ts` data file for manual guide entries. Workflow integrated in `/release` (step 6.5 auto-drafts entry) and `/update-infos-release` (step 4.5 for notable CC releases). Post-push hook in landing repo reminds to update `rss-entries.ts`. README updated with RSS link.
